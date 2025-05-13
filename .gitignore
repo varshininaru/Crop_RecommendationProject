@@ -1,0 +1,17 @@
+# Ignore Python virtual environments
+venv/
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Optional: Ignore VSCode settings
+.vscode/
+venv/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.vscode/

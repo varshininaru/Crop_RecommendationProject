@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Register</h2>
+    <form id="registrationForm">
+        <input type="text" id="username" name="username" placeholder="Username" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+        <span id="error" class="error">Passwords do not match</span>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
+        var error = document.getElementById('error');
+
+        // Username validation
+        if (username.length < 3) {
+            event.preventDefault();
+            error.textContent = 'Username must be at least 3 characters long';
+            error.style.display = 'block';
+            return;
+        }
+
+        // Password validation
+        if (password.length < 6) {
+            event.preventDefault();
+            error.textContent = 'Password must be at least 6 characters long';
+            error.style.display = 'block';
+            return;
+        }
+
+        // Confirm password validation
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            error.textContent = 'Passwords do not match';
+            error.style.display = 'block';
+            return;
+        }
+
+        error.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>

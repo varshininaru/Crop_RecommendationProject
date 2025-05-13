@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h2 {
+            margin-bottom: 20px;
+        }
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .container button:hover {
+            background-color: #0056b3;
+        }
+        .container .btn-link {
+            background-color: transparent;
+            border: none;
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .container .btn-link:hover {
+            color: #0056b3;
+        }
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Login Form</h2>
+    <form id="loginForm">
+        <input type="text" id="username" name="username" placeholder="Username" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <span id="error" class="error"></span>
+        <button type="submit">Login</button>
+        <button type="button" class="btn-link" onclick="location.href='signup.html'">Sign Up</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        var password = document.getElementById('password').value;
+        var error = document.getElementById('error');
+
+        // Password validation
+        if (password.length < 6) {
+            event.preventDefault();
+            error.textContent = 'Password must be at least 6 characters long';
+            error.style.display = 'block';
+            return;
+        }
+
+        // Password should not start with a number
+        if (!isNaN(password.charAt(0))) {
+            event.preventDefault();
+            error.textContent = 'Password should not start with a number';
+            error.style.display = 'block';
+            return;
+        }
+
+        // Password should start with an uppercase letter
+        if (!password.charAt(0).match(/[A-Z]/)) {
+            event.preventDefault();
+            error.textContent = 'Password must start with an uppercase letter';
+            error.style.display = 'block';
+            return;
+        }
+
+        error.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>

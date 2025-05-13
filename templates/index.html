@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Recommendation System</h1>
+        <form method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nitrogen">Nitrogen:</label>
+                    <input type="number" id="nitrogen" name="nitrogen" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="phosphorous">Phosphorous:</label>
+                    <input type="number" id="phosphorous" name="phosphorous" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="potassium">Potassium:</label>
+                    <input type="number" id="potassium" name="potassium" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="temperature">Temperature:</label>
+                    <input type="number" step="any" id="temperature" name="temperature" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="ph">pH:</label>
+                    <input type="number" step="any" id="ph" name="ph" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="humidity">Humidity:</label>
+                    <input type="number" step="any" id="humidity" name="humidity" class="form-control" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Get Recommendation</button>
+        </form>
+
+        {% if label %}
+            <div class="result">
+                <h2>Recommended Crop: {{ label }}</h2>
+                <p>Seeds:
+                    <a href="{{ seeds_urls[0] }}" target="_blank">{{ seeds_urls[0] }}</a>,
+                    <a href="{{ seeds_urls[1] }}" target="_blank">{{ seeds_urls[1] }}</a>
+                </p>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+``
